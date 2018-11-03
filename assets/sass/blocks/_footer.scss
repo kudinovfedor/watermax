@@ -1,27 +1,56 @@
-.footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
 
 .pre-footer {
     padding: 20px 0;
     background-color: lighten($footerBgColor, 10%);
 }
 
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 25px 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+
+    &-row {
+        display: flex;
+        align-items: center;
+    }
+
+    &-logo {
+        margin-right: 20px;
+    }
+
+    &-copyright {
+
+    }
+
+    &-developer {
+
+    }
+}
+
 .copyright {
-    padding: 14px 0;
-    background-color: $footerBgColor;
-    text-align: center;
-    color: $footerFontColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.developer {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    .svg-icon {
+        margin-left: 5px;
+    }
 
     a {
-        color: $footerFontColor;
-        text-decoration: underline;
-
-        &:hover {
-            color: $footerLinkColorActive;
-        }
+        display: inline-block;
+        vertical-align: middle;
+        text-decoration: none;
     }
 }

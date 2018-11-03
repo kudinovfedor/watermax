@@ -1,22 +1,47 @@
 </div><!-- .page-wrapper end-->
 
+<?php if (is_active_sidebar('footer-widget-area')) : ?>
+    <div class="pre-footer">
+        <div class="container">
+            <div class="row">
+                <?php dynamic_sidebar('footer-widget-area'); ?>
+            </div>
+        </div>
+    </div><!-- .pre-footer end-->
+<?php endif; ?>
+
 <footer class="footer">
-    <?php if (is_active_sidebar('footer-widget-area')) : ?>
-        <div class="pre-footer">
-            <div class="container">
-                <div class="row">
-                    <?php dynamic_sidebar('footer-widget-area'); ?>
+    <div class="container">
+        <div class="row footer-row">
+            <div class="col-md-8">
+                <div class="logo footer-logo">
+                    <?php if (has_custom_logo()) {
+                        the_custom_logo();
+                    } else {
+                        $svg = sprintf('<svg class="logo-img" width="195" height="22" fill="#fff" aria-label="%s"><use xlink:href="#logo"></use></svg>', get_bloginfo('name'));
+
+                        $link = sprintf('<a class="logo-link" href="%s">%s</a>', esc_url(home_url('/')), $svg);
+
+                        $span = sprintf('<span class="logo-link">%s</span>', $svg);
+
+                        $html = is_front_page() ? $span : $link;
+
+                        echo $html;
+                    } ?>
+                </div>
+                <div class="copyright footer-copyright">&copy; <?php echo date('Y'); ?>. Все права защищены</div>
+            </div>
+            <div class="col-md-4 footer-developer text-right">
+                <div class="developer ">
+                    <?php _e('Developed by', 'brainworks') ?>
+                    <a href="https://brainworks.com.ua/" target="_blank">
+                        <svg class="svg-icon" width="80" height="49" fill="#fff">
+                            <use xlink:href="#developer"></use>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div><!-- .pre-footer end-->
-    <?php endif; ?>
-
-    <div class="copyright">
-        <p class="container">
-            <?php _e('Developed by', 'brainworks') ?>
-            <a href="https://brainworks.com.ua/" target="_blank">BRAIN WORKS</a>
-            &copy; <?php echo date('Y'); ?>
-        </p>
+        </div>
     </div>
 </footer>
 
@@ -39,6 +64,10 @@
 <div class="is-hide"><?php svg_sprite(); ?></div>
 
 <?php wp_footer(); ?>
+
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.3'><\/script>".replace("HOST", location.hostname));
+//]]></script>
 
 </body>
 </html>

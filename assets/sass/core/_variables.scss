@@ -2,12 +2,12 @@ $debug: false !default;
 $image-url-path: "assets/img/" !default;
 $font-url-path: "assets/fonts/" !default;
 
-$borderRadius: 0px;
-$shadow: 0 0 10px rgba(#000, .2);
+$borderRadius: 3px;
+$shadow: 0 8px 35px rgba(#ff4200, .5);
 
 // BRAND
 $themeColorOne: #2c3e50; // header, menu, footer, title,
-$themeColorTwo: #e74c3c; // menu active item, button, footer link hover, woo
+$themeColorTwo: #ff4200; // menu active item, button, footer link hover, woo
 $themeColorThree: #3498db; // preHeader bg, wooOnSale
 $themeColorFour: #2980b9; //menu hover item, table border, preHeader font
 
@@ -78,7 +78,7 @@ $linkFontColorActive: lighten($linkFontColor, 20%);
 $buttonFontColor: #fff;
 $buttonFontColorActive: #fff;
 $buttonBgColor: $themeColorTwo;
-$buttonBgColorActive: darken($buttonBgColor, 10%);
+$buttonBgColorActive: darken($buttonBgColor, 5%);
 $buttonBorderColor: $themeColorTwo;
 $buttonOutlinedFirstColor: $themeColorTwo;
 $buttonOutlinedSecondColor: #fff;

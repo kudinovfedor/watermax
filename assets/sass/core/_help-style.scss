@@ -70,6 +70,18 @@
     list-style: none;
 }
 
+.d-block {
+    display: block;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.v-align-middle {
+    vertical-align: middle;
+}
+
 //xs 544
 @media #{$mobile} {
     .hide-on-mobile {

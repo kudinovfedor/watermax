@@ -10,40 +10,112 @@
     color: $headerFontColor;
 }
 
+.header {
+    padding: 15px 0;
+    border-bottom: 1px solid #f5f6f8;
+    background-color: #fff;
+    color: #333;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.5;
+
+    &-row {
+        display: flex;
+        align-items: center;
+    }
+
+    &-social {
+        margin-right: 70px;
+    }
+
+    &-callback {
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+        border: 0;
+        padding: 2px 0;
+        color: #1f905d;
+        font-weight: bold;
+        font-family: inherit;
+        text-transform: uppercase;
+        background-color: transparent;
+        border-bottom: 1px dashed #1f905d;
+
+        &:hover {
+            border-bottom-color: transparent;
+        }
+    }
+}
+
 .logo {
     &,
     &-link,
-    &-img {
+    &-img,
+    &-desc {
         display: inline-block;
         vertical-align: middle;
+    }
+
+    &-desc {
+        &::before {
+            content: ' ';
+            border-left: 1px solid #dbdbde;
+            margin: 0 15px;
+        }
     }
 }
 
 .phone {
     @extend %reset-list;
-
-    &,
-    &-item {
-        display: inline-block;
-        vertical-align: middle;
-    }
+    background-color: #fff;
+    padding: 0 5px;
+    position: relative;
 
     &-item {
-        margin: 0 5px;
+        &:hover {
+            .sub-phone {
+                display: block;
+                text-align: left;
+            }
+        }
+
+        .fa {
+            color: #333;
+        }
     }
 
     &-number {
         display: inline-block;
+        color: #333;
+        font-size: 20px;
+        line-height: 1.3;
+        font-weight: bold;
         text-decoration: none;
 
         &:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
     }
 }
 
+.sub-phone {
+    @extend %reset-list;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    color: #333;
+    padding: 0 5px 5px 5px;
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 10px 68px rgba(#303030, .11);
+}
+
 .social {
     @extend %reset-list;
+    font-size: 0;
 
     &,
     &-item {
@@ -52,15 +124,25 @@
     }
 
     &-item {
-        margin: 0 5px;
+        margin: 0 2px;
     }
 
     &-link {
         display: block;
+        width: 37px;
+        height: 37px;
+        line-height: 37px;
+        color: #fff;
+        font-size: 16px;
+        background-color: #ffc300;
         text-align: center;
         text-decoration: none;
+        border-radius: 50%;
+        @extend %smooth_animation;
 
         &:hover {
+            color: #333;
+            text-decoration: none;
         }
     }
 }

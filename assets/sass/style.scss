@@ -40,8 +40,8 @@ Tags: one-column, two-columns, full-width-template, e-commerce
 @import "elements/responsive-titles";
 @import "elements/scroll-top";
 @import "elements/forms";
-//@import "elements/buttons";
-@import "elements/buttons-2";
+@import "elements/buttons";
+//@import "elements/buttons-2";
 @import "elements/links";
 @import "elements/pagination";
 @import "elements/tables";
@@ -101,7 +101,7 @@ body {
     min-height: 100%;
 
     @media #{$mobile} {
-        padding-top: 80px;
+        padding-top: 60px;
     }
 }
 
@@ -165,4 +165,91 @@ img {
 
 .is-hide {
     display: none;
+}
+
+:focus {
+    outline: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    .header {
+        .social {
+            margin-right: 10px;
+        }
+    }
+
+    .phone {
+        &-number {
+            font-size: 16px;
+        }
+    }
+
+    .nav {
+        .menu {
+            &-item {
+                margin: 0 15px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        &,
+        .col-md-5 {
+            text-align: center;
+        }
+
+        &-row {
+            display: block;
+        }
+
+        &-social {
+            display: block;
+        }
+
+        &-logo,
+        &-social {
+            margin-bottom: 10px;
+        }
+    }
+
+    .logo {
+        &-desc {
+            display: none;
+        }
+    }
+
+    .footer {
+        padding: 12px 0;
+        text-align: center;
+
+        &-row,
+        &-copyright {
+            display: block;
+        }
+
+        &-logo {
+            margin-right: 0;
+        }
+
+        &-copyright {
+            margin-top: 8px
+        }
+
+        &-developer {
+            text-align: center;
+            margin-top: 8px;
+        }
+    }
+}
+
+@media only screen and (max-width: 544px) {
+    .header {
+        padding: 10px 0 15px;
+
+        &-logo {
+            display: none;
+        }
+    }
 }

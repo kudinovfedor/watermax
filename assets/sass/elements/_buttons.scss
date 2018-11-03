@@ -57,6 +57,19 @@ button {
     }
 }
 
+.button-secondary {
+    color: #fff;
+    border-color: #f7bf18;
+    background-color: #f7bf18;
+    box-shadow: 0 8px 35px rgba(#f7bf18, .5);
+
+    &:hover,
+    &:focus {
+        border-color: darken(#f7bf18, 5%);
+        background-color: darken(#f7bf18, 5%);
+    }
+}
+
 .button-block {
     display: block;
     width: 100%;

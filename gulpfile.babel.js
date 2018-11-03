@@ -1,6 +1,6 @@
 'use strict';
 
-const themeName = 'brainworks';
+const themeName = 'watermax';
 
 import gulp from 'gulp';
 import zip from 'gulp-zip';
@@ -28,12 +28,18 @@ const getFullDate = () => {
 };
 
 gulp.task('svg', () => {
-    return gulp.src(`${themeName}/assets/img/svg/*.svg`)
+    return gulp.src(`assets/img/svg/*.svg`)
         .pipe(plumber())
-        .pipe(svgmin({js2svg: {pretty: false}}))
+        .pipe(svgmin({
+            plugins: [
+                {removeViewBox: false},
+                {removeUselessDefs: true},
+            ],
+            js2svg: {pretty: false}
+        }))
         .pipe(svgstore({inlineSvg: true}))
         .pipe(rename({basename: 'svg', prefix: '', suffix: '-sprite', extname: '.svg'}))
-        .pipe(gulp.dest(`${themeName}/assets/img/`));
+        .pipe(gulp.dest(`assets/img`));
 });
 
 gulp.task('sass', () => {
@@ -54,7 +60,8 @@ gulp.task('sass', () => {
             cascade: false
         }))
         // .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('css', () => {
@@ -94,11 +101,14 @@ gulp.task('watch', () => {
 
 gulp.task('default', () => {
     browserSync.init({
-        proxy: "sites.local/brainworks",
+        baseDir: './',
+        ghostMode: false,
+        //proxy: 'http://yourlocal.dev',
     });
-    //gulp.watch('assets/sass/**/*.scss', gulp.series('sass'));
     gulp.watch('assets/img/svg/*.svg', gulp.series('svg'));
-    gulp.watch('style.css').on('change', browserSync.reload);
+    gulp.watch('assets/sass/**/*.scss', gulp.series('sass'));
+    //gulp.watch('style.css').on('change', browserSync.reload);
     //gulp.watch('assets/js/brainworks.js', gulp.series('js'));
     gulp.watch('**/*.php').on('change', browserSync.reload);
+    gulp.watch('assets/img/svg-sprite.svg').on('change', browserSync.reload);
 });
