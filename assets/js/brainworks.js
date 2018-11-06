@@ -36,6 +36,31 @@
         // Buy one click
         buyOneClick('.one-click', '[data-field-id="field7"]', 'h1.page-name');
 
+        var reviews = $('.js-reviews');
+        var reviewsNav = $('.js-reviews-nav');
+
+        if (typeof $.fn.slick === 'function' || reviews.children().length > 1) {
+            reviews.slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                draggable: false,
+                infinite: false,
+            });
+
+            reviewsNav.find('div').first().addClass('is-current');
+
+            reviewsNav.find('div').on('click', function () {
+                var el = $(this);
+                var slideIndex = el.index();
+
+                if (el.hasClass('is-current')) return;
+
+                el.addClass('is-current').siblings().removeClass('is-current');
+                reviews.slick('slickGoTo', parseInt(slideIndex));
+            });
+        }
+
     });
 
     /**

@@ -253,7 +253,7 @@ if (!function_exists('bw_last_posts')) {
         $atts = shortcode_atts(
             array(
                 'count' => 3, // Кол-во новостей для отображения
-                'button_title' => __('Читать полностью', 'brainworks') // Текст в ссылке
+                'button_title' => __('Читать &rarr;', 'brainworks') // Текст в ссылке
             ), $atts);
 
         $posts = wp_get_recent_posts(array(
@@ -271,7 +271,7 @@ if (!function_exists('bw_last_posts')) {
             $thumbnail = get_the_post_thumbnail_url($post['ID'], 'medium');
             $thumbnail_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
             $permalink = get_permalink($post['ID']);
-            $output .= '<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12"><div class="custom-card custom-card-with-image">';
+            $output .= '<div class="col-md-6 col-lg-4 col-xs-12 col-sm-6"><div class="custom-card custom-card-with-image">';
             if ($thumbnail !== false) {
                 $output .= '<div class="custom-card-image">
                                     <img src="' . $thumbnail . '" title="' . $post['post_title'] . '" alt="' . $thumbnail_alt . '" width="100%" height="auto"  />
@@ -281,11 +281,11 @@ if (!function_exists('bw_last_posts')) {
                                 <h3>
                                     <a href="' . $permalink . '">' . $post['post_title'] . '</a>
                                 </h3>
-                                <p>
-                                    ' . $post['post_excerpt'] . '
-                                </p>
-                                <br />
-                                <a href="' . $permalink . '" class="button-small button-inverse">
+                                <div class="custom-card-content">
+                                    ' . $post['post_excerpt'] .  'Говорят, со дна правильно построенного колодца даже днем можно увидеть звезды, а вода в нем с каждым годом становится лишь...
+                                </div>
+                                <time class="custom-card-time"><i class="far fa-clock" aria-hidden="true"></i> ' . get_the_date('d.m.Y') . '</time>
+                                <a href="' . $permalink . '" class="custom-card-link">
                                     ' . $atts['button_title'] . '
                                 </a>
                             </div>';
@@ -471,4 +471,70 @@ if (!function_exists('bw_custom_auth_shortcode')) {
     }
 
     add_shortcode( 'bw-custom-auth', 'bw_custom_auth_shortcode' );
+}
+
+if (!function_exists('bw_reviews_shortcode')) {
+    /**
+     * Add Shortcode Reviews List
+     *
+     * @param $atts
+     *
+     * @return string
+     */
+    function bw_reviews_shortcode($atts)
+    {
+        // Attributes
+        $atts = shortcode_atts(
+            array(),
+            $atts
+        );
+
+        $output = '';
+
+        $args = array(
+            'post_type' => 'reviews',
+            'publish_status' => 'publish',
+            'orderby' => 'post_date',
+            'order' => 'DESC',
+            'posts_per_page' => -1,
+            'meta_query' => array(
+                array(
+                    'key' => 'review-display',
+                    'value' => '1',
+                )
+            ),
+        );
+
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+            $output .= '<div class="review-wrapper">';
+            $output .= '<div class="review-list text-center js-reviews">';
+            while ($query->have_posts()) {
+                $query->the_post();
+                $output .= '<div>';
+                $output .= '<div class="review-item">';
+                $output .= '<div class="review-title">' . get_the_title() . '</div>';
+                $output .= '<div class="review-content">' . get_the_content() . '</div>';
+                $output .= '<div class="review-client">- ' . get_post_meta(get_the_ID(), 'review-client', true) . '</div>';
+                $output .= '<div class="review-location">' . get_post_meta(get_the_ID(), 'review-location', true) . '</div>';
+                $output .= '</div>';
+                $output .= '</div>';
+            }
+            wp_reset_postdata();
+            $output .= '</div>';
+            $output .= '<div class="review-thumbnails review-nav js-reviews-nav text-center">';
+            while ($query->have_posts()) {
+                $query->the_post();
+                $output .= '<div class="review-thumbnail">' . get_the_post_thumbnail() . '</div>';
+            }
+            wp_reset_postdata();
+            $output .= '</div>';
+            $output .= '</div>';
+        }
+
+        return $output;
+    }
+
+    add_shortcode('bw-reviews', 'bw_reviews_shortcode');
 }
