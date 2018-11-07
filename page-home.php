@@ -7,7 +7,7 @@
 <?php get_header(); ?>
 
 <?php
-/*
+/* */ ?>
 
 <?php
 $args = array(
@@ -26,25 +26,32 @@ $args = array(
 
 $query = new WP_Query($args);
 if ($query->have_posts()) { ?>
-    <div class="review-wrapper">
-        <div class="review-list text-center js-reviews">
+    <div class="reviews-wrapper">
+        <div class="reviews-list text-center js-reviews">
             <?php while ($query->have_posts()) {
-                $query->the_post(); ?>
+                $query->the_post();
+                $client = get_post_meta(get_the_ID(), 'review-client', true);
+                $location = get_post_meta(get_the_ID(), 'review-location', true);
+                ?>
                 <div>
-                    <div class="review-item">
-                        <div class="review-title"><?php the_title() ?></div>
-                        <div class="review-content"><?php the_content() ?></div>
-                        <div class="review-client">- <?php echo get_post_meta(get_the_ID(), 'review-client', true);  ?></div>
-                        <div class="review-location"><?php echo get_post_meta(get_the_ID(), 'review-location', true);  ?></div>
+                    <div class="reviews-item">
+                        <div class="reviews-title"><?php the_title() ?></div>
+                        <div class="reviews-content"><?php the_content() ?></div>
+                        <?php if($client) { ?>
+                            <div class="reviews-client">- <?php echo esc_html($client); ?></div>
+                        <?php } ?>
+                        <?php if($location) { ?>
+                            <div class="reviews-location"><?php echo esc_html($location); ?></div>
+                        <?php } ?>
                     </div>
                 </div>
             <?php } ?>
             <?php wp_reset_postdata(); ?>
         </div>
-        <div class="review-thumbnails review-nav js-reviews-nav text-center">
+        <div class="reviews-thumbnails reviews-nav js-reviews-nav text-center">
             <?php while ($query->have_posts()) {
                 $query->the_post(); ?>
-                <div class="review-thumbnail"><?php the_post_thumbnail() ?></div>
+                <div class="reviews-thumbnail"><?php the_post_thumbnail() ?></div>
             <?php } ?>
             <?php wp_reset_postdata(); ?>
         </div>
@@ -126,8 +133,6 @@ if ($query->have_posts()) { ?>
         </table>
     </div>
 </div>
-
- */ ?>
 
 <?php get_template_part('loops/content', 'home'); ?>
 

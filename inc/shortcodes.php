@@ -282,7 +282,7 @@ if (!function_exists('bw_last_posts')) {
                                     <a href="' . $permalink . '">' . $post['post_title'] . '</a>
                                 </h3>
                                 <div class="custom-card-content">
-                                    ' . $post['post_excerpt'] .  'Говорят, со дна правильно построенного колодца даже днем можно увидеть звезды, а вода в нем с каждым годом становится лишь...
+                                    ' . $post['post_excerpt'] . 'Говорят, со дна правильно построенного колодца даже днем можно увидеть звезды, а вода в нем с каждым годом становится лишь...
                                 </div>
                                 <time class="custom-card-time"><i class="far fa-clock" aria-hidden="true"></i> ' . get_the_date('d.m.Y') . '</time>
                                 <a href="' . $permalink . '" class="custom-card-link">
@@ -386,18 +386,18 @@ if (!function_exists('bw_custom_login_shortcode')) {
             $output = '
                 <form class="login-form form-" action="/wp-json/api/auth/login" method="POST" autocomplete="off">
                 <fieldset>
-                    <input type="hidden" name="_redirect_url" value="'.strtok($_SERVER['REQUEST_URI'], '?').'" />
+                    <input type="hidden" name="_redirect_url" value="' . strtok($_SERVER['REQUEST_URI'], '?') . '" />
                     <div class="login-form-row form-group">
-                        <label for="login">'.__('Login', 'brainworks').'</label>
+                        <label for="login">' . __('Login', 'brainworks') . '</label>
                         <input type="text" id="login" name="login" class="form-field" required />
                     </div>
                     <div class="login-form-row form-group">
-                        <label for="password">'.__('Password', 'brainworks').'</label>
+                        <label for="password">' . __('Password', 'brainworks') . '</label>
                         <input type="password" id="password" name="password" class="form-field" required />
                     </div>
                     <div class="login-form-row form-group">
                         <button type="submit" name="submit" class="btn btn-primary login-form-submit">
-                            '.__('Login', 'brainworks').'
+                            ' . __('Login', 'brainworks') . '
                         </button>
                     </div>   
                 </fieldset>   
@@ -408,36 +408,36 @@ if (!function_exists('bw_custom_login_shortcode')) {
         return '';
     }
 
-    add_shortcode( 'bw-custom-login', 'bw_custom_login_shortcode' );
+    add_shortcode('bw-custom-login', 'bw_custom_login_shortcode');
 }
 
 if (!function_exists('bw_custom_register_shortcode')) {
-    function bw_custom_register_shortcode ($atts) 
+    function bw_custom_register_shortcode($atts)
     {
         if (!bw_user_logged_in()) {
             $output = '
             <form class="login-form form-" action="/wp-json/api/auth/register" method="POST" autocomplete="off">
             <fieldset>
-                <input type="hidden" name="_redirect_url" value="'.strtok($_SERVER['REQUEST_URI'], '?').'" />
+                <input type="hidden" name="_redirect_url" value="' . strtok($_SERVER['REQUEST_URI'], '?') . '" />
                 <div class="login-form-row form-group">
-                    <label for="login">'.__('Login', 'brainworks').'</label>
+                    <label for="login">' . __('Login', 'brainworks') . '</label>
                     <input type="text" id="login" name="login" class="form-field" required />
                 </div>
                 <div class="login-form-row form-group">
-                    <label for="email">'.__('Email', 'brainworks').'</label>
+                    <label for="email">' . __('Email', 'brainworks') . '</label>
                     <input type="email" id="email" name="email" class="form-field" required />
                 </div>
                 <div class="login-form-row form-group">
-                    <label for="password">'.__('Password', 'brainworks').'</label>
+                    <label for="password">' . __('Password', 'brainworks') . '</label>
                     <input type="password" id="password" name="password" class="form-field" required />
                 </div>
                 <div class="login-form-row form-group">
-                    <label for="retry_password">'.__('Retry password', 'brainworks').'</label>
+                    <label for="retry_password">' . __('Retry password', 'brainworks') . '</label>
                     <input type="password" id="retry_password" name="retry_password" class="form-field" required />
                 </div>
                 <div class="login-form-row form-group">
                     <button type="submit" name="submit" class="btn btn-primary login-form-submit">
-                        '.__('Register', 'brainworks').'
+                        ' . __('Register', 'brainworks') . '
                     </button>
                 </div>    
             </fieldset>  
@@ -447,22 +447,24 @@ if (!function_exists('bw_custom_register_shortcode')) {
         }
         return '';
     }
-    add_shortcode( 'bw-custom-register', 'bw_custom_register_shortcode' );
+
+    add_shortcode('bw-custom-register', 'bw_custom_register_shortcode');
 }
 
 
 if (!function_exists('bw_custom_auth_shortcode')) {
-    function bw_custom_auth_shortcode ($atts) {
-        
+    function bw_custom_auth_shortcode($atts)
+    {
+
         if (!bw_user_logged_in()) {
             $login_form = do_shortcode('[bw-custom-login]');
             $register_form = do_shortcode('[bw-custom-register]');
             $output = '<div class="login-block row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                '.$login_form.' 
+                ' . $login_form . ' 
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                '.$register_form.'
+                ' . $register_form . '
                 </div>
             </div>';
             return $output;
@@ -470,7 +472,7 @@ if (!function_exists('bw_custom_auth_shortcode')) {
         return '';
     }
 
-    add_shortcode( 'bw-custom-auth', 'bw_custom_auth_shortcode' );
+    add_shortcode('bw-custom-auth', 'bw_custom_auth_shortcode');
 }
 
 if (!function_exists('bw_reviews_shortcode')) {
@@ -508,25 +510,31 @@ if (!function_exists('bw_reviews_shortcode')) {
         $query = new WP_Query($args);
 
         if ($query->have_posts()) {
-            $output .= '<div class="review-wrapper">';
-            $output .= '<div class="review-list text-center js-reviews">';
+            $output .= '<div class="reviews-wrapper">';
+            $output .= '<div class="reviews-list text-center js-reviews">';
             while ($query->have_posts()) {
                 $query->the_post();
+                $client = get_post_meta(get_the_ID(), 'review-client', true);
+                $location = get_post_meta(get_the_ID(), 'review-location', true);
                 $output .= '<div>';
-                $output .= '<div class="review-item">';
-                $output .= '<div class="review-title">' . get_the_title() . '</div>';
-                $output .= '<div class="review-content">' . get_the_content() . '</div>';
-                $output .= '<div class="review-client">- ' . get_post_meta(get_the_ID(), 'review-client', true) . '</div>';
-                $output .= '<div class="review-location">' . get_post_meta(get_the_ID(), 'review-location', true) . '</div>';
+                $output .= '<div class="reviews-item">';
+                $output .= '<div class="reviews-title">' . get_the_title() . '</div>';
+                $output .= '<div class="reviews-content">' . get_the_content() . '</div>';
+                if ($client) {
+                    $output .= '<div class="reviews-client">- ' . $client . '</div>';
+                }
+                if ($location) {
+                    $output .= '<div class="reviews-location">' . $location . '</div>';
+                }
                 $output .= '</div>';
                 $output .= '</div>';
             }
             wp_reset_postdata();
             $output .= '</div>';
-            $output .= '<div class="review-thumbnails review-nav js-reviews-nav text-center">';
+            $output .= '<div class="reviews-thumbnails reviews-nav js-reviews-nav text-center">';
             while ($query->have_posts()) {
                 $query->the_post();
-                $output .= '<div class="review-thumbnail">' . get_the_post_thumbnail() . '</div>';
+                $output .= '<div class="reviews-thumbnail">' . get_the_post_thumbnail() . '</div>';
             }
             wp_reset_postdata();
             $output .= '</div>';

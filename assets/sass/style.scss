@@ -29,6 +29,7 @@ Tags: one-column, two-columns, full-width-template, e-commerce
 // PAGES
 @import "pages/single-post";
 @import "pages/blog-page";
+@import "pages/reviews";
 //@import "pages/woo";
 // ELEMENTS
 @import "elements/typography";
@@ -163,83 +164,6 @@ img {
 
 :focus {
     outline: 0;
-}
-
-.review {
-    &-wrapper {
-        padding: 60px 55px;
-        border-radius: 5px;
-        background-color: #fff;
-        box-shadow: 0 10px 68px rgba(#303030, .11);
-        max-width: 950px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    &-list {
-
-    }
-
-    &-item {
-        color: #333;
-    }
-
-    &-title {
-        color: #1f905d;
-        font-size: 30px;
-        font-weight: bold;
-        font-style: italic;
-        line-height: 1.2;
-        margin-bottom: 30px;
-    }
-
-    &-content {
-        font-weight: 300;
-        margin-bottom: 20px;
-
-        &,
-        p {
-            font-size: 16px;
-            line-height: (28/16);
-        }
-    }
-
-    &-client {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    &-location {
-        font-size: 15px;
-        color: #a1a1a1;
-        margin-bottom: 30px;
-    }
-
-    &-thumbnails {
-        height: 100px;
-    }
-
-    &-thumbnail {
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0 15px;
-        width: 50px;
-        height: 50px;
-        filter: grayscale(100%);
-        transition: .4s ease-in;
-
-        &.is-current {
-            width: 100px;
-            height: 100px;
-            filter: grayscale(0%);
-            transition: .4s;
-        }
-
-        img {
-            border-radius: 50%;
-        }
-    }
 }
 
 .price {

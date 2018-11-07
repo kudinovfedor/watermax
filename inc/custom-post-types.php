@@ -68,6 +68,18 @@ function bw_get_meta_box($meta_boxes)
                 'type' => 'text',
                 'name' => esc_html__('Location', 'brainworks'),
             ),
+            array(
+                'id' => $prefix . 'facebook',
+                'type' => 'url',
+                'name' => esc_html__('Facebook URL', 'brainworks'),
+                'placeholder' => 'https://www.facebook.com',
+            ),
+            array(
+                'id' => $prefix . 'instagram',
+                'type' => 'url',
+                'name' => esc_html__('Instagram URL', 'brainworks'),
+                'placeholder' => 'https://www.instagram.com',
+            ),
         ),
     );
 
