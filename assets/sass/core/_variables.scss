@@ -8,8 +8,8 @@ $shadow: 0 8px 35px rgba(#ff4200, .5);
 // BRAND
 $themeColorOne: #2c3e50; // header, menu, footer, title,
 $themeColorTwo: #ff4200; // menu active item, button, footer link hover, woo
-$themeColorThree: #3498db; // preHeader bg, wooOnSale
-$themeColorFour: #2980b9; //menu hover item, table border, preHeader font
+$themeColorThree: #FFC517; // preHeader bg, wooOnSale
+$themeColorFour: #FFC517; //menu hover item, table border, preHeader font
 
 // SELECTION
 $selectionBgColor: $themeColorTwo;
@@ -26,8 +26,8 @@ $preHeaderColor: $themeColorFour;
 // HEADER
 $headerBgColor: $themeColorOne;
 $headerFontColor: #fff;
-$headerHighlightBgColor: $themeColorTwo;
-$headerHighlightColor: #fff;
+$headerHighlightBgColor: $themeColorFour;
+$headerHighlightColor: #000000;
 
 // MENU
 $menuBgColor: $themeColorOne;

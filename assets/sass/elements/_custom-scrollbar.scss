@@ -10,31 +10,31 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background: $themeColorTwo;
+        background: $themeColorFour;
         border: 0 none #fff;
         border-radius: 0;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #fff;
+        background: $themeColorFour;
     }
 
     ::-webkit-scrollbar-thumb:active {
-        background: #aaa;
+        background: $themeColorFour;
     }
 
     ::-webkit-scrollbar-track {
-        background: #14151d;
+        background: $themeColorOne;
         border: 0 none #fff;
         border-radius: 0;
     }
 
     ::-webkit-scrollbar-track:hover {
-        background: #111219;
+        background: $themeColorOne;
     }
 
     ::-webkit-scrollbar-track:active {
-        background: #333;
+        background: $themeColorOne;
     }
 
     ::-webkit-scrollbar-corner {
