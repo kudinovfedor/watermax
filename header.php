@@ -116,7 +116,7 @@
 
         <?php /*
         <button class="button-small">Continue reading</button>
-        <button class="button-medium">Continue reading</button>
+        <button class="button-medium one-click">Continue reading</button>
         <button class="button-large">Continue reading</button>
         <button class="button-small button-secondary">Continue reading</button>
         <button class="button-medium button-secondary">Continue reading</button>

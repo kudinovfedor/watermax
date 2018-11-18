@@ -34,7 +34,7 @@
         });
         wrapHighlightedElements('.highlighted');
         // Buy one click
-        buyOneClick('.one-click', '[data-field-id="field7"]', 'h1.page-name');
+        buyOneClick('.one-click', '[data-field-id="field11"]', 'h1.page-name');
 
         var reviews = $('.js-reviews');
         var reviewsNav = $('.js-reviews-nav');
